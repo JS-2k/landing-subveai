@@ -1,357 +1,308 @@
 import { useState } from 'react';
-import { ArrowRight, CheckCircle2, Globe, BrainCircuit, Users, UserCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Zap, Target, BarChart3 } from 'lucide-react';
 
-// ─────────────────────────────────────────  S T Y L E   H E L P E R S
-
+// ── Colors
 const C = {
-  bg: '#030303',
-  card: '#0a0a0a',
-  border: 'rgba(255,255,255,0.06)',
-  border2: 'rgba(255,255,255,0.1)',
-  muted: '#64748b',
+  bg: '#060611',
+  card: 'rgba(14,14,36,0.6)',
+  cardSolid: '#0e0e24',
+  border: 'rgba(255,255,255,0.07)',
+  border2: 'rgba(255,255,255,0.12)',
+  muted: '#6b7280',
   sub: '#94a3b8',
+  text: '#c8cdd8',
   brand: '#6c31fb',
-  brand2: '#8f57fc',
-  brand3: '#b49afc',
-  glow: 'rgba(108,49,251,0.25)',
+  brand2: '#8b5cf6',
+  brand3: '#c4b5fd',
+  white: '#ffffff',
 };
 
-// ─────────────────────────────────────────  N A V B A R
+// ── X (Twitter) icon component
+function XIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
+// ─────────────────────────────────────────  N A V B A R
 function Navbar() {
-  const go = id => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   return (
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-      background: 'rgba(3,3,3,0.7)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+      background: 'rgba(6,6,17,0.8)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
       borderBottom: `1px solid ${C.border}`,
     }}>
-      <div className="container" style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px', height: 72, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/assets/logo.png" alt="SubveAI" style={{ width: 30, height: 30, objectFit: 'contain' }} />
-          <span style={{ fontSize: '1.05rem', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em' }}>SubveAI</span>
+          <img src="/assets/logo.png" alt="SubveAI" style={{ width: 32, height: 32, objectFit: 'contain' }} />
+          <span style={{ fontSize: '1.15rem', fontWeight: 800, color: C.white, letterSpacing: '-0.02em' }}>SubveAI</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-          <span className="hide-sm" style={{ fontSize: '0.8rem', color: C.muted, fontWeight: 500 }}>Coming Soon</span>
-          <button onClick={() => go('waitlist')} style={{
-            padding: '8px 20px', borderRadius: 999, fontSize: '0.8rem', fontWeight: 600, color: '#fff',
-            background: 'rgba(108,49,251,0.15)', border: `1px solid rgba(108,49,251,0.35)`,
-            cursor: 'pointer', transition: 'all 0.2s',
-          }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(108,49,251,0.3)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(108,49,251,0.15)'; }}
-          >Join Waitlist</button>
-        </div>
+        <span className="hide-sm" style={{ fontSize: '0.82rem', color: C.sub, fontWeight: 400 }}>Smarter Outreach. Bigger Opportunities.</span>
       </div>
     </nav>
   );
 }
 
 // ─────────────────────────────────────────  H E R O
-
 function Hero() {
-  const go = id => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  return (
-    <section style={{ position: 'relative', paddingTop: 160, paddingBottom: 60, textAlign: 'center', overflow: 'hidden' }}>
-      {/* Background glow */}
-      <div style={{
-        position: 'absolute', top: '40%', left: '50%', transform: 'translate(-50%,-50%)',
-        width: 800, height: 600, borderRadius: '50%',
-        background: 'radial-gradient(ellipse, rgba(108,49,251,0.12) 0%, transparent 65%)',
-        pointerEvents: 'none', filter: 'blur(40px)',
-      }} />
-
-      <div className="container" style={{ position: 'relative', maxWidth: 780 }}>
-        {/* Badge */}
-        <div className="fade-up-1" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 6,
-          padding: '6px 16px', borderRadius: 999,
-          background: 'rgba(108,49,251,0.1)', border: '1px solid rgba(108,49,251,0.2)',
-          marginBottom: 28,
-        }}>
-          <Sparkles size={11} color={C.brand2} />
-          <span style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: C.brand2 }}>Coming Soon</span>
-        </div>
-
-        {/* Headline */}
-        <h1 className="fade-up-2" style={{
-          fontSize: 'clamp(2.4rem, 6vw, 4.2rem)', fontWeight: 800,
-          lineHeight: 1.1, letterSpacing: '-0.035em', marginBottom: 20, color: '#fff',
-        }}>
-          Turn company URLs into<br />
-          <span style={{
-            background: `linear-gradient(135deg, ${C.brand3}, ${C.brand})`,
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}>qualified leads.</span>
-        </h1>
-
-        {/* Sub */}
-        <p className="fade-up-3" style={{
-          fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', color: C.sub,
-          maxWidth: 540, margin: '0 auto 36px', lineHeight: 1.75, fontWeight: 400,
-        }}>
-          Discover the right companies and decision-makers faster with AI-powered lead discovery.
-        </p>
-
-        {/* CTA */}
-        <div className="fade-up-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
-          <button onClick={() => go('waitlist')} style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            padding: '14px 32px', borderRadius: 999,
-            background: '#fff', color: '#000', fontSize: '0.95rem', fontWeight: 700,
-            border: 'none', cursor: 'pointer', transition: 'all 0.25s',
-            boxShadow: '0 0 0 0 rgba(255,255,255,0)',
-          }}
-            onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 0 36px rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1.03)'; }}
-            onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 0 0 0 rgba(255,255,255,0)'; e.currentTarget.style.transform = 'scale(1)'; }}
-          >
-            Join the Waitlist <ArrowRight size={16} strokeWidth={2.5} />
-          </button>
-          <span style={{ fontSize: '0.75rem', color: C.muted }}>Be among the first to access SubveAI.</span>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─────────────────────────────────────────  W O R K F L O W   V I S U A L
-
-const steps = [
-  { icon: Globe, num: '01', title: 'Company URL', desc: 'Enter any company website', highlight: false },
-  { icon: BrainCircuit, num: '02', title: 'AI Research', desc: 'Analyzes company, market & products', highlight: true },
-  { icon: Users, num: '03', title: 'Decision Makers', desc: 'Identifies relevant people & contacts', highlight: false },
-  { icon: UserCheck, num: '04', title: 'Qualified Leads', desc: 'Prospects ready for outreach', highlight: false },
-];
-
-function FlowConnector() {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: 48, position: 'relative' }}>
-      <div style={{
-        width: 1, height: '100%',
-        background: `linear-gradient(to bottom, ${C.brand}66, ${C.brand}22)`,
-      }} />
-      {/* animated dot */}
-      <div style={{
-        position: 'absolute', top: 0, left: '50%',
-        width: 5, height: 5, borderRadius: '50%', marginLeft: -2.5,
-        background: C.brand2, boxShadow: `0 0 6px ${C.brand}`,
-        animation: 'flow-dot 2s ease-in-out infinite',
-      }} />
-    </div>
-  );
-}
-
-function WorkflowVisual() {
-  return (
-    <section className="fade-up-5" style={{ padding: '20px 0 0' }}>
-      <div className="container" style={{ maxWidth: 640 }}>
-        {/* Card */}
-        <div style={{
-          background: C.card, borderRadius: 24,
-          border: `1px solid ${C.border}`,
-          padding: 'clamp(28px, 5vw, 48px)',
-          position: 'relative', overflow: 'hidden',
-          boxShadow: `0 0 80px ${C.glow}, 0 24px 60px rgba(0,0,0,0.5)`,
-        }}>
-          {/* Glow spots */}
-          <div style={{ position: 'absolute', top: -80, right: -60, width: 200, height: 200, background: `${C.brand}18`, borderRadius: '50%', filter: 'blur(60px)', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', bottom: -60, left: -40, width: 160, height: 160, background: 'rgba(59,130,246,0.06)', borderRadius: '50%', filter: 'blur(50px)', pointerEvents: 'none' }} />
-
-          {/* Label */}
-          <div style={{ textAlign: 'center', marginBottom: 32 }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
-              <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#22c55e', animation: 'pulse-soft 2s ease-in-out infinite' }} />
-              <span style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: C.muted }}>How it works</span>
-            </div>
-            <h3 style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.2rem)', fontWeight: 700, color: '#fff', letterSpacing: '-0.015em' }}>
-              From Company URL → Qualified Leads
-            </h3>
-          </div>
-
-          {/* Steps */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
-            {steps.map((s, i) => {
-              const Icon = s.icon;
-              const isHL = s.highlight;
-              return (
-                <div key={s.num} style={{ display: 'contents' }}>
-                  {/* Step row */}
-                  <div style={{
-                    display: 'flex', alignItems: 'center', gap: 16, width: '100%', maxWidth: 380,
-                    padding: '14px 18px', borderRadius: 16,
-                    background: isHL ? `${C.brand}0d` : 'rgba(255,255,255,0.02)',
-                    border: `1px solid ${isHL ? `${C.brand}44` : C.border}`,
-                    boxShadow: isHL ? `0 0 24px ${C.brand}18` : 'none',
-                    transition: 'background 0.2s',
-                  }}
-                    onMouseEnter={e => { e.currentTarget.style.background = isHL ? `${C.brand}18` : 'rgba(255,255,255,0.04)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = isHL ? `${C.brand}0d` : 'rgba(255,255,255,0.02)'; }}
-                  >
-                    {/* Number + icon */}
-                    <div style={{
-                      width: 44, height: 44, borderRadius: 12, flexShrink: 0,
-                      background: isHL ? `${C.brand}1a` : 'rgba(255,255,255,0.04)',
-                      border: `1px solid ${isHL ? `${C.brand}55` : 'rgba(255,255,255,0.08)'}`,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>
-                      <Icon size={20} color={isHL ? C.brand2 : '#9ca3af'} strokeWidth={1.8} />
-                    </div>
-
-                    {/* Text */}
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ fontSize: '0.58rem', fontWeight: 700, color: isHL ? C.brand3 : C.muted, letterSpacing: '0.08em' }}>{s.num}</span>
-                        <span style={{ fontSize: '0.82rem', fontWeight: 700, color: isHL ? '#fff' : '#e2e8f0' }}>{s.title}</span>
-                      </div>
-                      <span style={{ fontSize: '0.7rem', color: C.muted, lineHeight: 1.5 }}>{s.desc}</span>
-                    </div>
-                  </div>
-
-                  {/* Connector */}
-                  {i < steps.length - 1 && <FlowConnector />}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Tagline */}
-          <div style={{ textAlign: 'center', marginTop: 28, paddingTop: 20, borderTop: `1px solid ${C.border}` }}>
-            <span style={{ fontSize: '0.75rem', color: C.muted, letterSpacing: '0.03em', fontWeight: 500 }}>
-              AI researches. &nbsp;Identifies. &nbsp;Qualifies.
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─────────────────────────────────────────  V A L U E
-
-function ValueStatement() {
-  return (
-    <section style={{ padding: 'clamp(72px, 12vw, 120px) 0', textAlign: 'center' }}>
-      <div className="container" style={{ maxWidth: 660 }}>
-        <h2 style={{
-          fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', fontWeight: 800,
-          lineHeight: 1.2, letterSpacing: '-0.025em', marginBottom: 16,
-          background: 'linear-gradient(135deg, #fff 30%, #64748b 100%)',
-          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-        }}>
-          Find the right prospects.<br />Start better conversations.
-        </h2>
-        <p style={{ fontSize: '1rem', color: C.muted, lineHeight: 1.8, fontWeight: 400 }}>
-          SubveAI is being built to make B2B prospect discovery faster, simpler, and more intelligent.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-// ─────────────────────────────────────────  W A I T L I S T
-
-function Waitlist() {
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
-
   const submit = e => { e.preventDefault(); if (email.trim()) { setDone(true); setEmail(''); } };
 
   return (
-    <section id="waitlist" style={{ borderTop: `1px solid ${C.border}`, padding: 'clamp(64px, 10vw, 100px) 0' }}>
-      <div className="container" style={{ maxWidth: 480, textAlign: 'center' }}>
-        <h2 style={{ fontSize: 'clamp(1.4rem, 3vw, 1.9rem)', fontWeight: 800, color: '#fff', marginBottom: 10, letterSpacing: '-0.02em' }}>
-          Be first to try SubveAI.
-        </h2>
-        <p style={{ color: C.muted, fontSize: '0.9rem', marginBottom: 32, lineHeight: 1.7 }}>
-          Join the waitlist and get early access when we go live.
-        </p>
+    <section style={{ position: 'relative', paddingTop: 140, paddingBottom: 80, overflow: 'hidden' }}>
+      {/* ── Aurora Background ── */}
+      <div style={{
+        position: 'absolute', top: -100, right: -200, width: 900, height: 700,
+        background: 'radial-gradient(ellipse at 60% 30%, rgba(108,49,251,0.18) 0%, rgba(59,130,246,0.08) 40%, transparent 70%)',
+        filter: 'blur(60px)', pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', top: 80, right: 100, width: 500, height: 400,
+        background: 'radial-gradient(ellipse, rgba(108,49,251,0.12) 0%, transparent 65%)',
+        filter: 'blur(80px)', pointerEvents: 'none',
+      }} />
+      {/* Subtle wave line */}
+      <div style={{
+        position: 'absolute', top: 200, left: 0, right: 0, height: 300,
+        background: 'linear-gradient(135deg, transparent 30%, rgba(108,49,251,0.06) 50%, transparent 70%)',
+        transform: 'skewY(-3deg)', pointerEvents: 'none',
+      }} />
 
-        {done ? (
-          <div style={{
-            background: C.card, borderRadius: 20, padding: '36px 24px',
-            border: `1px solid rgba(34,197,94,0.2)`,
-            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12,
-            animation: 'fadeUp 0.5s ease-out forwards',
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px', position: 'relative', display: 'flex', gap: 60, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+
+        {/* ── Left Column ── */}
+        <div style={{ flex: '1 1 480px', minWidth: 320, paddingTop: 20 }}>
+          {/* Badge */}
+          <div className="fade-up-1" style={{
+            display: 'inline-block', padding: '6px 16px', borderRadius: 4,
+            fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase',
+            color: C.brand2, marginBottom: 28,
           }}>
-            <div style={{
-              width: 48, height: 48, borderRadius: '50%',
-              background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <CheckCircle2 size={22} color="#22c55e" />
-            </div>
-            <h3 style={{ fontWeight: 700, fontSize: '1.05rem', color: '#fff' }}>You're on the list!</h3>
-            <p style={{ fontSize: '0.8rem', color: C.muted }}>We'll notify you when your access is ready.</p>
+            Coming Soon
           </div>
-        ) : (
-          <form onSubmit={submit} style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-            <input
-              type="email" required placeholder="Enter your email" value={email}
-              onChange={e => setEmail(e.target.value)}
-              style={{
-                flex: 1, minWidth: 200, padding: '14px 18px',
-                background: C.card, border: `1px solid ${C.border2}`, borderRadius: 14,
-                color: '#fff', fontSize: '0.85rem', fontFamily: 'inherit',
-                outline: 'none', transition: 'border-color 0.2s, box-shadow 0.2s',
+
+          {/* Headline */}
+          <h1 className="fade-up-2" style={{
+            fontSize: 'clamp(2.4rem, 5vw, 3.6rem)', fontWeight: 900,
+            lineHeight: 1.08, letterSpacing: '-0.035em', color: C.white, marginBottom: 24,
+          }}>
+            Turn company URLs<br />into{' '}
+            <span style={{
+              background: `linear-gradient(135deg, ${C.brand2}, ${C.brand3})`,
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+            }}>real opportunities.</span>
+          </h1>
+
+          {/* Sub */}
+          <p className="fade-up-3" style={{
+            fontSize: 'clamp(0.9rem, 1.8vw, 1.05rem)', color: C.sub,
+            maxWidth: 480, lineHeight: 1.75, marginBottom: 48,
+          }}>
+            SubveAI helps you discover the right companies and decision-makers from any website — powered by AI.
+          </p>
+
+          {/* Feature Cards */}
+          <div className="fade-up-4" style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            {[
+              { icon: Zap, title: 'Find the right leads', desc: 'From any company URL.' },
+              { icon: Target, title: 'Focus on what matters', desc: 'Get decision-makers, not noise.' },
+              { icon: BarChart3, title: 'Grow faster', desc: 'More conversations. More opportunities.' },
+            ].map(({ icon: Icon, title, desc }) => (
+              <div key={title} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, flex: '1 1 160px', minWidth: 150 }}>
+                <div style={{
+                  width: 40, height: 40, borderRadius: 12, flexShrink: 0,
+                  background: 'rgba(108,49,251,0.1)', border: '1px solid rgba(108,49,251,0.2)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <Icon size={18} color={C.brand2} strokeWidth={2} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.8rem', fontWeight: 700, color: C.white, marginBottom: 2 }}>{title}</div>
+                  <div style={{ fontSize: '0.72rem', color: C.muted, lineHeight: 1.5 }}>{desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Right Column — Waitlist Card ── */}
+        <div className="fade-up-3" style={{ flex: '0 1 420px', minWidth: 300 }}>
+          <div style={{
+            background: 'rgba(12,12,30,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
+            borderRadius: 24, padding: 'clamp(28px, 4vw, 40px)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            boxShadow: '0 24px 80px rgba(0,0,0,0.5), 0 0 60px rgba(108,49,251,0.08)',
+          }}>
+            {/* Label */}
+            <div style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: C.muted, marginBottom: 8 }}>
+              Be the first to know
+            </div>
+            <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: C.white, letterSpacing: '-0.02em', marginBottom: 12 }}>
+              Join the Waitlist
+            </h2>
+            <p style={{ fontSize: '0.85rem', color: C.sub, lineHeight: 1.7, marginBottom: 28 }}>
+              Get early access to SubveAI and be part of our launch journey.
+            </p>
+
+            {done ? (
+              <div style={{
+                background: 'rgba(34,197,94,0.06)', borderRadius: 16, padding: '28px 20px',
+                border: '1px solid rgba(34,197,94,0.2)',
+                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
+                animation: 'fadeUp 0.4s ease-out forwards',
+              }}>
+                <CheckCircle2 size={28} color="#22c55e" />
+                <span style={{ fontWeight: 700, color: C.white }}>You're on the list!</span>
+                <span style={{ fontSize: '0.78rem', color: C.muted }}>We'll notify you when we launch.</span>
+              </div>
+            ) : (
+              <>
+                <form onSubmit={submit} style={{ display: 'flex', gap: 10, marginBottom: 20, flexWrap: 'wrap' }}>
+                  <input
+                    type="email" required placeholder="Enter your email address" value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    style={{
+                      flex: '1 1 180px', padding: '14px 16px',
+                      background: 'rgba(255,255,255,0.04)', border: `1px solid ${C.border2}`, borderRadius: 12,
+                      color: C.white, fontSize: '0.84rem', fontFamily: 'inherit', outline: 'none',
+                      transition: 'border-color 0.2s, box-shadow 0.2s',
+                    }}
+                    onFocus={e => { e.currentTarget.style.borderColor = `${C.brand}99`; e.currentTarget.style.boxShadow = `0 0 0 3px ${C.brand}22`; }}
+                    onBlur={e => { e.currentTarget.style.borderColor = C.border2; e.currentTarget.style.boxShadow = 'none'; }}
+                  />
+                  <button type="submit" style={{
+                    padding: '14px 24px', borderRadius: 12,
+                    background: C.brand, color: C.white, fontSize: '0.84rem', fontWeight: 700,
+                    border: 'none', cursor: 'pointer', transition: 'all 0.2s', whiteSpace: 'nowrap',
+                    display: 'flex', alignItems: 'center', gap: 6,
+                    boxShadow: '0 0 24px rgba(108,49,251,0.3)',
+                  }}
+                    onMouseEnter={e => { e.currentTarget.style.background = C.brand2; e.currentTarget.style.boxShadow = '0 0 36px rgba(108,49,251,0.45)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = C.brand; e.currentTarget.style.boxShadow = '0 0 24px rgba(108,49,251,0.3)'; }}
+                  >Notify Me <ArrowRight size={14} strokeWidth={2.5} /></button>
+                </form>
+
+                {/* Trust signals */}
+                <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+                  {['Early access', 'Product updates', 'No spam, ever'].map(t => (
+                    <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <CheckCircle2 size={14} color="#22c55e" />
+                      <span style={{ fontSize: '0.72rem', color: C.sub }}>{t}</span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────  T E A M S   S E C T I O N
+function TeamsSection() {
+  const tags = ['Sales Teams', 'Recruiters', 'Founders', 'Growth Marketers', 'Partnership Teams'];
+  return (
+    <section className="fade-up-5" style={{ padding: '60px 0 80px', borderTop: `1px solid ${C.border}` }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 40 }}>
+        <div>
+          <div style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: C.muted, marginBottom: 16 }}>
+            Built for teams who want to do more
+          </div>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            {tags.map(t => (
+              <span key={t} style={{
+                padding: '8px 20px', borderRadius: 999, fontSize: '0.78rem', fontWeight: 500,
+                background: 'rgba(255,255,255,0.04)', border: `1px solid ${C.border2}`, color: C.sub,
+                transition: 'all 0.2s', cursor: 'default',
               }}
-              onFocus={e => { e.currentTarget.style.borderColor = `${C.brand}88`; e.currentTarget.style.boxShadow = `0 0 0 3px ${C.brand}20`; }}
-              onBlur={e => { e.currentTarget.style.borderColor = C.border2; e.currentTarget.style.boxShadow = 'none'; }}
-            />
-            <button type="submit" style={{
-              padding: '14px 28px', borderRadius: 14,
-              background: C.brand, color: '#fff', fontSize: '0.85rem', fontWeight: 700,
-              border: 'none', cursor: 'pointer', transition: 'all 0.2s', whiteSpace: 'nowrap',
-              boxShadow: `0 0 20px ${C.glow}`,
-            }}
-              onMouseEnter={e => { e.currentTarget.style.background = C.brand2; e.currentTarget.style.boxShadow = `0 0 32px ${C.glow}`; }}
-              onMouseLeave={e => { e.currentTarget.style.background = C.brand; e.currentTarget.style.boxShadow = `0 0 20px ${C.glow}`; }}
-            >Join Waitlist</button>
-          </form>
-        )}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = `${C.brand}55`; e.currentTarget.style.color = C.white; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = C.border2; e.currentTarget.style.color = C.sub; }}
+              >{t}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* Handwritten text */}
+        <div className="hide-sm" style={{ textAlign: 'right', position: 'relative' }}>
+          <div style={{
+            fontFamily: "'Caveat', cursive", fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
+            color: C.brand3, lineHeight: 1.3, fontWeight: 500,
+            transform: 'rotate(-3deg)',
+          }}>
+            Smarter leads<br />are on the way.
+          </div>
+          {/* Curved arrow (SVG) */}
+          <svg width="40" height="50" viewBox="0 0 40 50" fill="none" style={{ position: 'absolute', bottom: -10, right: -10, transform: 'rotate(15deg)' }}>
+            <path d="M30 5 C25 20, 10 30, 8 45" stroke={C.brand3} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+            <path d="M4 38 L8 45 L14 40" stroke={C.brand3} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
       </div>
     </section>
   );
 }
 
 // ─────────────────────────────────────────  F O O T E R
-
 function Footer() {
   return (
-    <footer style={{ borderTop: `1px solid ${C.border}`, padding: '48px 0' }}>
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-          <img src="/assets/logo.png" alt="SubveAI" style={{ width: 24, height: 24, objectFit: 'contain' }} />
-          <span style={{ fontWeight: 700, fontSize: '0.95rem', color: '#fff' }}>SubveAI</span>
+    <footer style={{ borderTop: `1px solid ${C.border}`, padding: '32px 0' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
+        {/* Left */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <img src="/assets/logo.png" alt="SubveAI" style={{ width: 24, height: 24, objectFit: 'contain' }} />
+            <span style={{ fontWeight: 800, fontSize: '0.9rem', color: C.white }}>SubveAI</span>
+          </div>
+          <span style={{ fontSize: '0.72rem', color: C.muted }}>© 2026 SubveAI. All rights reserved.</span>
         </div>
-        <p style={{ fontSize: '0.78rem', color: C.muted }}>AI-powered lead discovery.</p>
-        <p style={{ fontSize: '0.68rem', color: '#374151', marginTop: 16 }}>© 2026 SubveAI. All rights reserved.</p>
+
+        {/* Right */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <span className="hide-sm" style={{ fontSize: '0.78rem', color: C.sub, marginRight: 8 }}>Follow our journey</span>
+          {[
+            { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>, href: '#' },
+            { icon: <XIcon size={16} />, href: '#' },
+            { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>, href: '#' },
+          ].map((s, i) => (
+            <a key={i} href={s.href} aria-label="Social link" style={{
+              width: 36, height: 36, borderRadius: 10,
+              background: 'rgba(255,255,255,0.04)', border: `1px solid ${C.border}`,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: C.sub, transition: 'all 0.2s', textDecoration: 'none',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = `${C.brand}55`; e.currentTarget.style.color = C.white; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.color = C.sub; }}
+            >{s.icon}</a>
+          ))}
+        </div>
       </div>
     </footer>
   );
 }
 
 // ─────────────────────────────────────────  A P P
-
 export default function App() {
   return (
-    <div style={{ minHeight: '100vh', position: 'relative' }}>
-      {/* Grid background */}
+    <div style={{ minHeight: '100vh', background: C.bg, position: 'relative' }}>
+      {/* Grid bg — fades out */}
       <div style={{
         position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0,
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
-        backgroundSize: '72px 72px',
-        maskImage: 'radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%)',
-        WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%)',
+        backgroundImage: 'linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)',
+        backgroundSize: '80px 80px',
+        maskImage: 'radial-gradient(ellipse 70% 50% at 50% 0%, black 20%, transparent 100%)',
+        WebkitMaskImage: 'radial-gradient(ellipse 70% 50% at 50% 0%, black 20%, transparent 100%)',
       }} />
 
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Navbar />
         <main>
           <Hero />
-          <WorkflowVisual />
-          <ValueStatement />
-          <Waitlist />
+          <TeamsSection />
         </main>
         <Footer />
       </div>
