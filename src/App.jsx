@@ -53,17 +53,6 @@ function MobileHeroArrow() {
   )
 }
 
-// ── SVG Bottom Cycle Arrow (Sweeping back for Desktop)
-function CycleArrow() {
-  return (
-    <div className="cycle-arrow-container hidden lg:block" style={{ position: 'absolute', bottom: -56, left: '6%', right: '2%', height: 80, pointerEvents: 'none', zIndex: -1 }}>
-      <svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1000 80" fill="none">
-        <path d="M 980 10 C 1050 80, 800 70, 500 70 C 200 70, 10 60, 30 10" stroke={C.brand} strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.5" />
-        <path d="M 45 18 L 30 10 L 22 24" stroke={C.brand} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
-      </svg>
-    </div>
-  );
-}
 
 export default function App() {
   const [email, setEmail] = useState('');
@@ -138,19 +127,11 @@ export default function App() {
                 <p style={{ fontSize: '0.72rem', color: C.textSub, lineHeight: 1.5, paddingLeft: 24, paddingRight: 0 }}>
                   {s.desc.split('\n').map((line, idx) => <span key={idx}>{line}<br /></span>)}
                 </p>
-                {i === 0 && (
-                  <div className="handwritten fade-up-4 cycle-arrow-container" style={{ position: 'absolute', bottom: -50, left: -20, color: '#c4b5fd', fontSize: '1.25rem', transform: 'rotate(-6deg)', textAlign: 'center', opacity: 0.9 }}>
-                    And the cycle<br />continues...
-                  </div>
-                )}
               </div>
               {i < steps.length - 1 && <StepArrow />}
             </Fragment>
           ))}
-          <CycleArrow />
         </div>
-
-        {/* ── M O B I L E   W O R K F L O W ── */}
         <div className="flex lg:hidden flex-col items-center w-full max-w-[360px] mx-auto px-5 mb-16 fade-up-2 shrink-0">
           {steps.map((s, i) => (
             <Fragment key={s.num}>
@@ -183,30 +164,7 @@ export default function App() {
             </Fragment>
           ))}
 
-          {/* Mobile Infinity Cycle Section */}
-          <div className="w-full flex justify-center relative mt-2 pt-2 shrink-0">
-            <svg className="absolute -top-4 left-1/2 -ml-[25px]" width="80" height="60" viewBox="0 0 80 60" fill="none">
-              <path d="M 0 0 C 0 30, 10 40, 45 40" stroke="#9f7cfc" strokeWidth="1.5" strokeDasharray="3 4" fill="none" strokeLinecap="round" />
-            </svg>
 
-            <div className="flex items-center gap-3 relative z-10 mt-5 w-full justify-center pl-6">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[rgba(20,18,40,0.8)] border border-[rgba(140,93,255,0.3)] shadow-[0_5px_15px_rgba(140,93,255,0.15)] flex-shrink-0">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M10 12c0-2.8-2.2-5-5-5s-5 2.2-5 5 2.2 5 5 5c2 0 3.8-1.2 4.6-3l.8-1.5c1-1.8 2.8-3 4.8-3 2.8 0 5 2.2 5 5s-2.2 5-5 5c-2 0-3.8-1.2-4.6-3l-.8-1.5" />
-                </svg>
-              </div>
-
-              <div className="relative shrink-0">
-                <svg width="35" height="20" viewBox="0 0 35 20" style={{ position: 'absolute', left: -26, top: 22, pointerEvents: 'none' }}>
-                  <path d="M35 5 Q 20 18, 5 13" stroke="#d8b4fe" strokeWidth="1.5" fill="none" />
-                  <path d="M10 9 L 5 13 L 10 18" stroke="#d8b4fe" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <div className="handwritten leading-tight text-[1.3rem]" style={{ color: '#d8b4fe', transform: 'rotate(-4deg)', letterSpacing: '0.02em', textShadow: '0 2px 5px rgba(0,0,0,0.5)' }}>
-                  And the cycle<br />continues...
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* ── W A I T L I S T ── */}
