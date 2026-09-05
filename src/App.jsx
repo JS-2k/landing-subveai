@@ -228,18 +228,18 @@ function TeamsSection() {
         </div>
 
         {/* Handwritten text */}
-        <div className="hide-sm" style={{ textAlign: 'right', position: 'relative' }}>
+        <div className="hide-sm" style={{ textAlign: 'right', position: 'relative', marginTop: 10 }}>
           <div style={{
             fontFamily: "'Caveat', cursive", fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
             color: C.brand3, lineHeight: 1.3, fontWeight: 500,
-            transform: 'rotate(-3deg)',
+            transform: 'rotate(-4deg)', display: 'inline-block', paddingRight: 20
           }}>
             Smarter leads<br />are on the way.
           </div>
-          {/* Curved arrow (SVG) */}
-          <svg width="40" height="50" viewBox="0 0 40 50" fill="none" style={{ position: 'absolute', bottom: -10, right: -10, transform: 'rotate(15deg)' }}>
-            <path d="M30 5 C25 20, 10 30, 8 45" stroke={C.brand3} strokeWidth="1.5" fill="none" strokeLinecap="round" />
-            <path d="M4 38 L8 45 L14 40" stroke={C.brand3} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          {/* Curved arrow pointing UP and RIGHT */}
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" style={{ position: 'absolute', top: -20, right: -40 }}>
+            <path d="M10 50 C 25 45, 45 35, 50 10" stroke={C.brand3} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+            <path d="M38 16 L 50 10 L 52 22" stroke={C.brand3} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
       </div>
