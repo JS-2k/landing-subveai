@@ -81,7 +81,7 @@ export default function App() {
 
         <div className="fade-up-1 shrink-0 w-full px-5 text-center relative" style={{ marginBottom: 35 }}>
           <h1 className="handwritten relative inline-block mx-auto text-[3.2rem] leading-[1.05] sm:text-[4rem] md:text-[5rem] lg:text-[6rem]" style={{ color: '#e2d5fa' }}>
-            Automate the way<br />you find customers.
+            Automate the way<br />you find leads.
           </h1>
           <p style={{ marginTop: 10, fontSize: '1.05rem', color: C.textSub, fontWeight: 500, letterSpacing: '0.02em' }}>
             Give us a company URL. Let AI do the rest.
