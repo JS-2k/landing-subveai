@@ -26,7 +26,7 @@ function StepArrow() {
 // ── Mobile Downward Arrow 
 function MobileStepArrow() {
   return (
-    <div className="flex-shrink-0 text-[#9f7cfc] z-0 flex items-center justify-center h-8 my-1" style={{ opacity: 0.8 }}>
+    <div className="flex-shrink-0 text-[#9f7cfc] z-0 flex items-center justify-center h-8 my-4" style={{ opacity: 0.8 }}>
       <svg width="24" height="32" viewBox="0 0 24 32" fill="none">
         <path d="M12 2 L12 28 M7 23 L12 29 L17 23" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
