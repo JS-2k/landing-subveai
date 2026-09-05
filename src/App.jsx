@@ -94,7 +94,7 @@ export default function App() {
           <div className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden bg-brand shrink-0">
             <img src="/assets/logo.png" alt="" className="w-full h-full object-cover" onError={(e) => e.target.style.display = 'none'} />
           </div>
-          <span style={{ fontSize: '1.25rem', fontWeight: 800, color: C.white, letterSpacing: '-0.02em' }}>SubveAI</span>
+          <span style={{ fontSize: '1.25rem', fontWeight: 800, color: C.white, letterSpacing: '-0.02em' }}>Subve AI</span>
         </div>
 
         {/* Desktop Navbar Item */}
