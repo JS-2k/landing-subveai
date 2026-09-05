@@ -115,7 +115,7 @@ export default function App() {
         <div className="flex lg:hidden flex-col items-center w-full max-w-[360px] mx-auto px-5 fade-up-2 shrink-0" style={{ marginBottom: '3rem' }}>
           {steps.map((s, i) => (
             <Fragment key={s.num}>
-              <div className="relative flex items-center rounded-[22px] w-full bg-[rgba(20,18,40,0.6)] border border-[#302657] shadow-[0_10px_30px_rgba(0,0,0,0.3)]" style={{ padding: '24px 20px' }}>
+              <div className="relative flex items-center rounded-[22px] w-full bg-[rgba(20,18,40,0.6)] border border-[#302657] shadow-[0_10px_30px_rgba(0,0,0,0.3)]" style={{ padding: '24px 20px', gap: '20px' }}>
 
                 {/* Number Overlapped Badge */}
                 <div className="absolute -top-[10px] -left-[10px] w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white z-10" style={{ background: '#8c5dff', boxShadow: '0 4px 10px rgba(140, 93, 255, 0.4)' }}>
@@ -123,7 +123,7 @@ export default function App() {
                 </div>
 
                 {/* Icon Block */}
-                <div className="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-[14px] bg-[rgba(35,32,65,0.7)] border border-[#403570] mr-5 relative overflow-hidden">
+                <div className="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-[14px] bg-[rgba(35,32,65,0.7)] border border-[#403570] relative overflow-hidden">
                   <div className="absolute w-8 h-8 rounded-full bg-[#8c5dff] opacity-20 blur-xl"></div>
                   <s.icon strokeWidth={1.5} className="w-[28px] h-[28px] text-[#90bcff] relative z-10 drop-shadow-md" style={{ color: i % 2 === 0 ? '#8ca9ff' : '#c992ff' }} />
                 </div>
