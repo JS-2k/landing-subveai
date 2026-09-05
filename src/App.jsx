@@ -99,7 +99,7 @@ export default function App() {
 
         <div className="fade-up-1 shrink-0 w-full px-5 text-center relative" style={{ marginBottom: 35 }}>
           <h1 className="handwritten relative inline-block mx-auto text-[3.2rem] leading-[1.05] sm:text-[4rem] md:text-[5rem] lg:text-[6rem]" style={{ color: '#e2d5fa' }}>
-            Smarter leads<br />are on the way.
+            Automate the way<br />you find leads.
             <HeroArrow />
             <MobileHeroArrow />
           </h1>
