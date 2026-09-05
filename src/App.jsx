@@ -26,9 +26,9 @@ function StepArrow() {
 // ── Mobile Downward Arrow 
 function MobileStepArrow() {
   return (
-    <div className="flex-shrink-0 text-[#9f7cfc] z-0 flex items-center justify-center h-8 my-4" style={{ opacity: 0.8 }}>
-      <svg width="24" height="32" viewBox="0 0 24 32" fill="none">
-        <path d="M12 2 L12 28 M7 23 L12 29 L17 23" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <div className="flex-shrink-0 text-[#9f7cfc] z-0 flex items-center justify-center h-8" style={{ opacity: 0.8, margin: '24px 0' }}>
+      <svg width="24" height="34" viewBox="0 0 24 34" fill="none">
+        <path d="M12 2 L12 32 M7 25 L12 33 L17 25" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
   );
@@ -115,7 +115,7 @@ export default function App() {
         <div className="flex lg:hidden flex-col items-center w-full max-w-[360px] mx-auto px-5 mb-16 fade-up-2 shrink-0">
           {steps.map((s, i) => (
             <Fragment key={s.num}>
-              <div className="relative flex items-center p-[18px] rounded-[22px] w-full bg-[rgba(20,18,40,0.6)] border border-[#302657] shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+              <div className="relative flex items-center rounded-[22px] w-full bg-[rgba(20,18,40,0.6)] border border-[#302657] shadow-[0_10px_30px_rgba(0,0,0,0.3)]" style={{ padding: '24px 20px' }}>
 
                 {/* Number Overlapped Badge */}
                 <div className="absolute -top-[10px] -left-[10px] w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white z-10" style={{ background: '#8c5dff', boxShadow: '0 4px 10px rgba(140, 93, 255, 0.4)' }}>
