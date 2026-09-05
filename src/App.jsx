@@ -1,5 +1,5 @@
 import { useState, Fragment } from 'react';
-import { ArrowRight, Mail, LayoutTemplate, FileSearch, Users, Send, MessageSquare, CalendarDays, Menu, Zap, Lock } from 'lucide-react';
+import { ArrowRight, Mail, LayoutTemplate, FileSearch, Users, Send, MessageSquare, CalendarDays } from 'lucide-react';
 
 const C = {
   bg: '#0a0914',
