@@ -112,7 +112,7 @@ export default function App() {
             </Fragment>
           ))}
         </div>
-        <div className="flex lg:hidden flex-col items-center w-full max-w-[360px] mx-auto px-5 mb-16 fade-up-2 shrink-0">
+        <div className="flex lg:hidden flex-col items-center w-full max-w-[360px] mx-auto px-5 fade-up-2 shrink-0" style={{ marginBottom: '3rem' }}>
           {steps.map((s, i) => (
             <Fragment key={s.num}>
               <div className="relative flex items-center rounded-[22px] w-full bg-[rgba(20,18,40,0.6)] border border-[#302657] shadow-[0_10px_30px_rgba(0,0,0,0.3)]" style={{ padding: '24px 20px' }}>
@@ -143,18 +143,16 @@ export default function App() {
               {i < steps.length - 1 && <MobileStepArrow />}
             </Fragment>
           ))}
-
-
         </div>
 
         {/* ── W A I T L I S T ── */}
-        <div className="fade-up-3 flex flex-col items-center w-full px-5 shrink-0" style={{ maxWidth: 800 }}>
+        <div className="fade-up-3 flex flex-col items-center w-full px-5 shrink-0" style={{ maxWidth: 800, marginTop: '3rem' }}>
           {done ? (
             <div className="py-4 px-8 bg-green-900/40 border border-green-500/50 rounded-xl text-green-400 font-semibold text-sm">
               You're on the list! We'll be in touch.
             </div>
           ) : (
-            <form onSubmit={submit} style={{ display: 'flex', gap: 12, width: '100%', maxWidth: 540, flexWrap: 'wrap', justifyContent: 'center', position: 'relative', zIndex: 20 }}>
+            <form onSubmit={submit} style={{ display: 'flex', gap: 16, width: '100%', maxWidth: 540, flexWrap: 'wrap', justifyContent: 'center', position: 'relative', zIndex: 20 }}>
               <div style={{ position: 'relative', flex: '1 1 280px' }}>
                 <Mail size={18} color={C.textSub} style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)' }} />
                 <input
