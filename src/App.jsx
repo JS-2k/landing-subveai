@@ -34,24 +34,6 @@ function MobileStepArrow() {
   );
 }
 
-// ── SVG Main Swoosh Arrow (Top Right of Hero)
-function HeroArrow() {
-  return (
-    <svg className="hero-arrow hidden sm:block pointer-events-none" width="80" height="80" viewBox="0 0 80 80" fill="none" style={{ position: 'absolute', top: -10, right: -80 }}>
-      <path d="M10 70 Q 40 60, 70 20" stroke="#c4b5fd" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-      <path d="M55 20 L 70 20 L 65 35" stroke="#c4b5fd" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function MobileHeroArrow() {
-  return (
-    <svg className="hero-arrow-mobile block sm:hidden pointer-events-none" width="60" height="60" viewBox="0 0 60 60" fill="none" style={{ position: 'absolute', top: -30, right: -25 }}>
-      <path d="M5 50 Q 25 40, 50 10" stroke="#c4b5fd" strokeWidth="2" fill="none" strokeLinecap="round" />
-      <path d="M35 10 L 50 10 L 45 25" stroke="#c4b5fd" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
 
 
 export default function App() {
@@ -100,8 +82,6 @@ export default function App() {
         <div className="fade-up-1 shrink-0 w-full px-5 text-center relative" style={{ marginBottom: 35 }}>
           <h1 className="handwritten relative inline-block mx-auto text-[3.2rem] leading-[1.05] sm:text-[4rem] md:text-[5rem] lg:text-[6rem]" style={{ color: '#e2d5fa' }}>
             Automate the way<br />you find leads.
-            <HeroArrow />
-            <MobileHeroArrow />
           </h1>
           <p style={{ marginTop: 10, fontSize: '1.05rem', color: C.textSub, fontWeight: 500, letterSpacing: '0.02em' }}>
             Give us a company URL. Let AI do the rest.
