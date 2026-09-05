@@ -23,23 +23,13 @@ function StepArrow() {
   );
 }
 
-// ── Mobile Downward Arrow 
-function MobileStepArrow({ index = 0 }) {
-  const isEven = index % 2 === 0;
+// ── Mobile Downward Arrow (Matches Desktop Arrow)
+function MobileStepArrow() {
   return (
-    <div className="flex-shrink-0 text-[#9f7cfc] z-0 flex items-center justify-center h-10" style={{ opacity: 0.8, margin: '20px 0' }}>
+    <div className="flex-shrink-0 z-0 flex items-center justify-center h-10" style={{ margin: '20px 0' }}>
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        {isEven ? (
-          <>
-            <path d="M 20 2 C 32 12, 8 26, 20 38" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-            <path d="M 14 32 L 20 38 L 26 32" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-          </>
-        ) : (
-          <>
-            <path d="M 20 2 C 8 12, 32 26, 20 38" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-            <path d="M 14 32 L 20 38 L 26 32" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-          </>
-        )}
+        <path d="M 20 5 Q 30 20, 20 35" stroke={C.brand} strokeWidth="2" fill="none" strokeLinecap="round" />
+        <path d="M 20 28 L 20 35 L 27 33" stroke={C.brand} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
   );
@@ -151,7 +141,7 @@ export default function App() {
               </div>
 
               {/* Separator Arrow */}
-              {i < steps.length - 1 && <MobileStepArrow index={i} />}
+              {i < steps.length - 1 && <MobileStepArrow />}
             </Fragment>
           ))}
         </div>
