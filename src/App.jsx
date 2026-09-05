@@ -103,10 +103,6 @@ export default function App() {
           <div style={{ position: 'absolute', bottom: 2, left: 0, width: '100%', height: 1, background: '#c4b5fd', borderRadius: 2 }} />
         </div>
 
-        {/* Mobile Navbar Item */}
-        <button className="sm:hidden flex items-center justify-center p-2 rounded text-slate-300 shrink-0">
-          <Menu size={28} strokeWidth={2} />
-        </button>
       </nav>
 
       {/* ── H E R O ── */}
